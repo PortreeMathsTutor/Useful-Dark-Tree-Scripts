@@ -23,3 +23,20 @@ public class DontFallThroughGround : MonoBehaviour
 
 
 
+//or
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+
+//public class DontFallThroug : MonoBehaviour
+//{
+ //   public Rigidbody rigidbdy;
+ // public Vector3 direction;
+ //  public float maxSpeed=20f;
+ //   void Update()
+ //   {
+ //       if (Vector3.Project(rigidbdy.velocity, direction).magnitude > maxSpeed)
+ //       {
+  //          transform.position = new Vector3(transform.position.x + 20, transform.position.y + 50, transform.position.z + 20);
+ //       }}}
+    
