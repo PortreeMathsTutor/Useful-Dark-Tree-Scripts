@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+public class ScoreUpdator : MonoBehaviour
+{
+  
+    public int score=0; 
+    public int scoreSoldiers = 0;
+    public int enemiesLeftAlive = 0;
+    public int highScoreInt = 0;
+    public Text highScore;
+    public Text scoreTex;
+    public Text enemiesTex;
+    private void Start()
+    {
+        highScore.text = PlayerPrefs.GetInt("highScoreInt").ToString();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        enemiesLeftAlive = DarkTreeFPS.NPC.enimies; // We need to acces the score value that is stored in a different script.
+        scoreSoldiers = DarkTreeFPS.NPC.score; // We need to acces the score value that is stored in a different script.
+        score = scoreSoldiers;
+        if (enemiesLeftAlive==0) { SceneManager.LoadScene(1); }  
+        if (score<0) { score = 0; }
+        scoreTex.text = "Score = "+score.ToString("0");
+        enemiesTex.text = "Enimies = " + enemiesLeftAlive.ToString("0");
+        if (score > PlayerPrefs.GetInt("highScoreInt", 0))
+        {
+            PlayerPrefs.SetInt("highScoreInt", score);
+            highScore.text = "Highscore = " + score.ToString() ;
+        }
+    }
+}
