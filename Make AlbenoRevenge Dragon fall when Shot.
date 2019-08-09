@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class IfBulletHitsAlbenoRevenge : MonoBehaviour
+{
+ public GameObject albenoRevenge;
+    private float speedAtStart;
+    public Rigidbody rid;
+    public static int scoreAlbenoRevenge = 0;                           
+    public Animator animator;   
+    private bool cantDie = false;
+
+    void Start()
+    {
+        cantDie = false;
+        speedAtStart = rid.velocity.magnitude;
+    }
+
+    void Update()
+    {
+        if ((rid.velocity.magnitude -speedAtStart> 1) && (scoreBoarBool == false))
+        {
+            albenoRevenge.GetComponent<KillPlayerOnContact>().enabled = false;
+            albenoRevenge.GetComponent<MoveAlbenoRevengeTowardsPlayer>().enabled = false;
+            rid.useGravity = true;
+            animator.SetTrigger("dieing");
+            cantDie = true;                                                                   //is already deead.
+            scoreAlbenoRevenge += 100;
+        }
+    }
+}
