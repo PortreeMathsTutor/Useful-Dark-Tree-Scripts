@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class IfyIsLessThanSomeAmountDie : MonoBehaviour
+{
+  public static int scoreDragon = 0;
+    public Transform dragon;
+    public Animator animator;
+   private float yisValue;
+    private bool cantDie = false;
+   
+    void Start()
+    {
+        yisValue = dragon.position.y;
+    }
+
+    void Update()
+    {    if ((transform.position.y < (yisValue - 10)&& (cantDie == false)))
+        {
+            animator.SetTrigger("dieing");
+           cantDie = true;
+            scoreDragon += 1;
+        } 
+    }
+}
