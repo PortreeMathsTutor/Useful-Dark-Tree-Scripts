@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TurnOffMeshRenderer : MonoBehaviour
+{
+    public Renderer rend;
+
+    void Start()
+    {
+        rend = GetComponent<Renderer>();
+        rend.enabled = false;
+    }
+    void OnCollisionEnter(Collision collision)
+    { rend.enabled = true; }
+}
