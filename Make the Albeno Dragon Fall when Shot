@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GetHitByBulletAlbeno : MonoBehaviour
+{
+    public Rigidbody rid;
+       public float timer = 0f;
+    public Animator animator;
+    public static int scoreAlbeno = 0;
+   public static bool scoreAlbenoBool = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+        timer = 0f;
+     
+        scoreAlbenoBool = false;
+        animator.SetBool("Attack", true);
+        animator.SetBool("Hit", false);
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+
+        if ((rid.velocity.magnitude > 24) && (scoreAlbenoBool == false) && (timer > 25f))
+        {
+            animator.SetBool("Attack", false);
+            animator.SetBool("Hit", true);
+            scoreAlbenoBool = true;
+            scoreAlbeno += 1000;
+        }
+
+    }
+}
