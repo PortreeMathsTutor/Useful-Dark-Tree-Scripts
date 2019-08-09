@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Drown : MonoBehaviour
+{
+    public GameObject deadReplacement;
+    public int amount = 1;
+    public static int score = 0;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (gameObject.transform.position.y < -146f)
+        {
+            score = score + amount;
+            Instantiate(deadReplacement, transform.position, transform.rotation);
+            Object.Destroy(gameObject);
+        }
+    }
+}
