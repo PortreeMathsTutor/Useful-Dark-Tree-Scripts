@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DontFallThroughGround : MonoBehaviour
+{
+    public float threshold=-10f;
+
+    void FixedUpdate()
+    {
+        if (transform.position.y < threshold)
+            transform.position = new Vector3(transform.position.x+20, 350
+                , transform.position.z+20);
+    }
+}
+
+
+
+
+
+
+
+
+
+
