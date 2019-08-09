@@ -19,7 +19,7 @@ public class IfBulletHitsAlbenoRevenge : MonoBehaviour
 
     void Update()
     {
-        if ((rid.velocity.magnitude -speedAtStart> 1) && (scoreBoarBool == false))
+        if ((rid.velocity.magnitude -speedAtStart> 1) && (cantDie == false))
         {
             albenoRevenge.GetComponent<KillPlayerOnContact>().enabled = false;
             albenoRevenge.GetComponent<MoveAlbenoRevengeTowardsPlayer>().enabled = false;
