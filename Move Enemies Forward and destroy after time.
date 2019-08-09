@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveGreysForward : MonoBehaviour
+{
+    float m_Speed;
+    // Start is called before the first frame update
+    void Start()
+    {
+        Object.Destroy(gameObject, 200.0f);
+    
+        //Fetch the Rigidbody component you attach from your GameObject
+
+        //Set the speed of the GameObject
+        m_Speed = Random.Range(3.0F, 30F);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(Vector3.forward * m_Speed * Time.deltaTime);
+
+    }
+}
