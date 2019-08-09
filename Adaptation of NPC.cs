@@ -21,8 +21,8 @@ namespace DarkTreeFPS
     /// so you can play with them any way you want
     public class NPC : MonoBehaviour
     {
-        public static int enimies = 0;
-        public static int score = 0;
+        public static int enimies = 0;                                                                            //Chaneded Here
+        public static int score = 0;                                                                           //Chaneded Here
         [Header("Debug settings")]
         [Tooltip("Enable debug helpers")]
         public bool debug = true;
@@ -144,7 +144,7 @@ namespace DarkTreeFPS
         #endregion
 
         private void Start()
-        {   enimies=enimies+1;
+        {   enimies=enimies+1;                                                                                      //Chaneded Here
             player = GameObject.FindGameObjectWithTag("Player");
             playerHealth = player.GetComponent<PlayerStats>();
             animator = GetComponent<Animator>();
@@ -197,8 +197,8 @@ namespace DarkTreeFPS
 
             if (health <= 0)
             {
-                enimies = enimies - 1;
-                score = score + 1;
+                enimies = enimies - 1;                                                                           //Chaneded Here
+                score = score + 1;                                                                               //Chaneded Here
                 Death();
             }
 
