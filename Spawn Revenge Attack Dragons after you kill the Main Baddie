@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RevengeAlbenoSpawner : MonoBehaviour
+{
+    public GameObject prefabToSpawn;                // The prefab that should be spawned
+    public float timeTillNextSpawn = 6.0f;              // The time (in seconds) between spawns
+    public bool spawnOnStart = false;               // Whether or not one instance of the prefab should be spawned on Start()
+    public bool move = true;                        // Move this spawn spot around
+    public float moveAmount = 5.0f;                 // The amount to move
+    public float turnAmount = 5.0f;
+    public float whenAlbenoDies=90000000f;
+  
+  private int scoreAlbeno2 = 0;
+    private int count = 0;
+    private float timeElapsedSinceStartOfGame=0;
+    private float spawnTimer = 0.0f;
+
+    // Use this for initialization
+    void Start()
+    {
+        if (spawnOnStart)
+        {
+            // First check to see if the prefab hasn't been set
+            if (prefabToSpawn != null)
+            {
+                // Instantiate the prefab
+                Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        scoreAlbeno2 = GetHitByBulletAlbeno.scoreAlbeno;
+        if (scoreAlbeno2 >1)
+        {
+            whenAlbenoDies = 0;
+        }
+        Debug.Log("the timeElapsedSinceStartOfGame is equalt to " + timeElapsedSinceStartOfGame);
+        timeElapsedSinceStartOfGame += Time.deltaTime;
+
+        if ((timeElapsedSinceStartOfGame >= whenAlbenoDies) && (count<25))
+        {
+            // Update the spawning timer
+            spawnTimer += Time.deltaTime;
+            // Spawn a prefab if the timer has reached timeTillNextSpawn
+            if (spawnTimer >= timeTillNextSpawn)
+            {
+                // First reset the spawn timer to 0
+                spawnTimer = 0.0f;
+                Spawn();
+                count = count + 1;
+            }
+
+            // Move and turn so that boxes don't keep spawning in the same spots
+            transform.Translate(0, 0, moveAmount);
+            transform.Rotate(0, turnAmount, 0);
+
+
+            void Spawn()
+            {
+                // First check to see if the prefab hasn't been set
+                if (prefabToSpawn != null)
+                {
+                    // Instantiate the prefab
+                    Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+                }
+            }
+        }
+    }
+}
+
