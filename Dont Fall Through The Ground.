@@ -4,39 +4,23 @@ using UnityEngine;
 
 public class DontFallThroughGround : MonoBehaviour
 {
-    public float threshold=-10f;
+  
+    public Rigidbody rigidbdy;
+  public Vector3 direction;
+   public float maxSpeed=20f;
+    public float threshold=0f;
+    // Start is called before the first frame update
 
+    // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position.y < threshold)
-            transform.position = new Vector3(transform.position.x+20, 350
-                , transform.position.z+20);
+        if (Vector3.Project(rigidbdy.velocity, direction).magnitude > maxSpeed)
+        {
+            rigidbdy.velocity = new Vector3(0, 10, 0);
+        }
+            if (transform.position.y < threshold)
+        {  transform.position = new Vector3(transform.position.x, 500
+                    , transform.position.z);
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-//or
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//public class DontFallThroug : MonoBehaviour
-//{
- //   public Rigidbody rigidbdy;
- // public Vector3 direction;
- //  public float maxSpeed=20f;
- //   void Update()
- //   {
- //       if (Vector3.Project(rigidbdy.velocity, direction).magnitude > maxSpeed)
- //       {
-  //          transform.position = new Vector3(transform.position.x + 20, transform.position.y + 50, transform.position.z + 20);
- //       }}}
-    
