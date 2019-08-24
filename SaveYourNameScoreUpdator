@@ -9,7 +9,15 @@ public class ScorUpdator : MonoBehaviour
     //The canvas has a DoNotDestoyOnLoad script on it.
     // It contains an imputfield a button, scoreText and Highscore text.
     //I also put the GamePrefab in the start scene 
-    //but I unticked the script FPSController on the Player because I needed controll of the mouse.
+    //I had To Change the FPS Controller script which is on the Player
+    //then I had to add   
+    //using UnityEngine.SceneManagement;
+    and
+  //  Scene sceneLoaded = SceneManager.GetActiveScene();
+    //    if (sceneLoaded.buildIndex == 4)
+    //    {                          }
+   // around everything that caused errors. It was a bit of a faf.
+  
     
 
     public string theName = "No Name";
