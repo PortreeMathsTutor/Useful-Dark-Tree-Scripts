@@ -14,7 +14,7 @@ public class ScorUpdator : MonoBehaviour
     //using UnityEngine.SceneManagement;
     and
   //  Scene sceneLoaded = SceneManager.GetActiveScene();
-    //    if (sceneLoaded.buildIndex == 4)
+    //    if (sceneLoaded.buildIndex == 1)
     //    {                          }
    // around everything that caused errors. It was a bit of a faf.
   
