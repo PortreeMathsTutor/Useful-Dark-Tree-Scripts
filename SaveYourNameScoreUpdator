@@ -3,62 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class ScorUpdator : MonoBehaviour
-{
-    //I put this on a canvas in the start scene.
-    //The canvas has a DoNotDestoyOnLoad script on it.
-    // It contains an imputfield a button, scoreText and Highscore text.
-    //I also put the GamePrefab in the start scene 
-    //I had To Change the FPS Controller script which is on the Player
-    //then I had to add   
-    //using UnityEngine.SceneManagement;
-    and
-  //  Scene sceneLoaded = SceneManager.GetActiveScene();
-    //    if (sceneLoaded.buildIndex == 1)
-    //    {                          }
-   // around everything that caused errors. It was a bit of a faf.
-  
-    
 
-    public string theName = "No Name";
-    public GameObject inputField;
+public class StartSceneGetName : MonoBehaviour
+{  
+//I put this on a canvas in the start scene.
+    // It contains an imputfield a button.
+
+    public string IsName = "No Name";
     public GameObject inputFieldtext;
-    public GameObject button;
-    public string nameOfTopSorer= "No Name";
-    public int score = 0;
-    public int highScoreInt = 0;
-    public Text highScore;
-    public Text scoreTex;
 
-    void Start()
+    public void StoreName()
     {
-
-        highScore.text = PlayerPrefs.GetString("nameTop") + " Highscore = " + PlayerPrefs.GetInt("highScoreInt").ToString();
-    }
-
-    public void StoreName() {
-        theName = inputFieldtext.GetComponent<Text>().text;
-        inputField.SetActive(false);
-        button.SetActive(false);
+        IsName = inputFieldtext.GetComponent<Text>().text;
+        PlayerPrefs.SetString("IsName", IsName);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
+
+
+
     // Update is called once per frame
     void Update()
     {
-
-       
-        score = DarkTreeFPS.Weapon.score;
-       
-        if (score < 0) { score = 0; }
-        scoreTex.text =theName + " Score = " + score.ToString("0");
-      
-        if (score > PlayerPrefs.GetInt("highScoreInt", 0))
-        {
-            PlayerPrefs.SetString("nameTop", theName);
-            PlayerPrefs.SetInt("highScoreInt", score);
-            highScore.text = theName+ " Highscore = " + score.ToString();
-          
-        }
+        IsName = inputFieldtext.GetComponent<Text>().text;
+        PlayerPrefs.SetString("IsName", IsName);
+        PlayerPrefs.Save();
+       Debug.Log("Hello " + IsName);
     }
-
 }
