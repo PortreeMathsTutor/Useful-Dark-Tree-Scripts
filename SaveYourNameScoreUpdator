@@ -21,13 +21,4 @@ public class StartSceneGetName : MonoBehaviour
     }
 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        IsName = inputFieldtext.GetComponent<Text>().text;
-        PlayerPrefs.SetString("IsName", IsName);
-        PlayerPrefs.Save();
-       Debug.Log("Hello " + IsName);
-    }
 }
