@@ -14,8 +14,7 @@ public class ScorUpdator : MonoBehaviour
 
     void Start()
     {
-        highScore.text = PlayerPrefs.GetInt("highScoreInt").ToString();
-        highScore.text = "Highscore = " + PlayerPrefs.GetInt("highScoreInt").ToString();
+            highScore.text = "Highscore = " + PlayerPrefs.GetInt("highScoreInt").ToString();
     }
 
     // Update is called once per frame
