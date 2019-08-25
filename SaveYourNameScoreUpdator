@@ -17,6 +17,7 @@ public class StartSceneGetName : MonoBehaviour
         IsName = inputFieldtext.GetComponent<Text>().text;
         PlayerPrefs.SetString("IsName", IsName);
         PlayerPrefs.Save();
+        Debug.Log("Hello " + IsName);
         SceneManager.LoadScene(1);
     }
 
