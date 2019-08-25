@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+public class ScoreUpdteWithNameOfTopScorer : MonoBehaviour
+{
+    public string IsTopName = "No Name";
+    public string IsName = "No Name";
+    public int score = 0;
+    public int highScoreInt = 0;
+    public Text highScore;
+    public Text scoreTex;
+
+    void Start()
+    {
+        IsName = PlayerPrefs.GetString("IsName", "no Name");
+        highScore.text = PlayerPrefs.GetString("IsTopName", "no Name") + " Highscore = " + PlayerPrefs.GetInt("highScoreInt",0).ToString();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        score = DarkTreeFPS.Weapon.score;
+
+        if (score < 0) { score = 0; }
+        scoreTex.text =IsName + " Score = " + score.ToString("0");
+
+        if (score > PlayerPrefs.GetInt("highScoreInt", 0))
+        {
+            PlayerPrefs.SetString("IsTopName", IsName);
+            IsTopName = PlayerPrefs.GetString("IsTopName", "no Name");
+            PlayerPrefs.SetInt("highScoreInt", score);
+            highScore.text = IsTopName + " Highscore = " + score.ToString();
+        }
+    }
+}
