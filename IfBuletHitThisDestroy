@@ -7,7 +7,7 @@ public class IfBuletHitThisDestroy : MonoBehaviour
     public Rigidbody rid;
     public float timer = 0f;
    public float maxVelocity = 15f;
-    public float startDelayToAccomidateFalling = 10f
+    public float startDelayToAccomidateFalling = 10f;
   
     private bool scoreBoarBool = false;
     // Start is called before the first frame update
