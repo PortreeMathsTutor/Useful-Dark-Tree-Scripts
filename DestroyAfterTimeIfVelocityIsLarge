@@ -1,0 +1,34 @@
+ public GameObject albenoRevenge;
+    private float speedAtStart;
+    public Rigidbody rid;
+    public static int scoreAlbenoRevenge = 0;
+   // public float timer = 0f;
+    public Animator animator;
+
+
+    private bool scoreBoarBool = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+      //  timer = 0f;
+        scoreBoarBool = false;
+        speedAtStart = rid.velocity.magnitude;
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if ((rid.velocity.magnitude -speedAtStart> 1) && (scoreBoarBool == false))
+        {
+            albenoRevenge.GetComponent<KillPlayerOnContact>().enabled = false;
+            albenoRevenge.GetComponent<MoveAlbenoRevengeTowardsPlayer>().enabled = false;
+            rid.useGravity = true;
+            animator.SetTrigger("dieing");
+            scoreBoarBool = true;
+            scoreAlbenoRevenge += 100;
+        }
+
+    }
+
+}
