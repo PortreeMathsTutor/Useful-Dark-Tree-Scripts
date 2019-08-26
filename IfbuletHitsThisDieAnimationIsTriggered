@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class IfbuletHitsThisDieAnimationIsTriggered : MonoBehaviour
+{
+    public Rigidbody rid;
+    public static int scoreBoar = 0;
+    public float timer = 0f;
+    public Animator animator;
+  
+    private bool scoreBoarBool = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+        timer = 0f;
+        scoreBoarBool = false;
+        animator.SetBool("live", true);
+        animator.SetBool("Die", false);
+
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        timer += Time.deltaTime;
+     
+          
+            if (( rid.velocity.magnitude>15) &&(scoreBoarBool == false)&&(timer>10f))
+            {
+            animator.SetBool("live", false);
+            animator.SetBool("Die", true);
+            scoreBoarBool = true;
+            scoreBoar += 1;
+        }
+        
+        
+    }
+
+}
